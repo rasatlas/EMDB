@@ -1,2 +1,2 @@
 # EMDB
-Lightweight replica of IMDB
+Lightweight IMDB replica
