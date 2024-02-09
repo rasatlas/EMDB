@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Sets up association class between movie and people"""
+"""Sets up association class between movie and people."""
 from base_model import Base, BaseModel
 from sqlalchemy import Column, String, ForeignKey
 
