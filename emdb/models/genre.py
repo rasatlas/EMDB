@@ -5,7 +5,7 @@ from sqlalchemy import Column, String
 
 
 class Genre(Base, BaseModel):
-    """Representaiton of Genre"""
+    """Representation of Genre"""
     __tablename__ = 'tbl_genre'
 
     genre = Column(String(250), unique=True, nullable=False)
