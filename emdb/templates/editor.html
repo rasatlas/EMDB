@@ -4,7 +4,7 @@ EMDB - Admininstrator
 {% endblock %}
 {% block content %}
 <!--People Form Start-->
-<form id="people_form">
+<form id="people_form" class="form_sizer">
   <div class="input-group mb-3">
     <span class="input-group-text" id="basic-addon1">First Name</span>
     <input type="text" class="form-control" placeholder="First Name" aria-label="Username"
@@ -28,6 +28,64 @@ EMDB - Admininstrator
     <input type="file" class="form-control" id="inputGroupFile02">
     <label class="input-group-text" for="inputGroupFile02">Upload</label>
   </div>
+  <div class="input-group mb-3">
+    <label for="startDate">Birth Date </label>
+    <input id="startDate" class="form-control" type="date" />
+  </div>
+  <div class="input-group mb-3">
+    <label for="startDate">Death Date </label>
+    <input id="startDate" class="form-control" type="date" />
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary">Edit</button>
+    <button type="button" class="btn btn-primary">Delete</button>
+  </div>
 </form>
 <!--People Form End-->
+
+<!--Language Form Start-->
+<form id="Language_form" class="form_sizer">
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Language</span>
+    <input type="text" class="form-control" placeholder="Language" aria-label="Username"
+      aria-describedby="basic-addon1">
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary">Edit</button>
+    <button type="button" class="btn btn-primary">Delete</button>
+  </div>
+</form>
+<!--Language Form End-->
+
+<!--Genre Form Start-->
+<form id="Language_form" class="form_sizer">
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Genre</span>
+    <input type="text" class="form-control" placeholder="Genre" aria-label="Username"
+      aria-describedby="basic-addon1">
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary">Edit</button>
+    <button type="button" class="btn btn-primary">Delete</button>
+  </div>
+</form>
+<!--Genre Form End-->
+
+<!--PG Rating Form Start-->
+<form id="Language_form" class="form_sizer">
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">PG Rating</span>
+    <input type="text" class="form-control" placeholder="PG Rating" aria-label="Username"
+      aria-describedby="basic-addon1">
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary">Edit</button>
+    <button type="button" class="btn btn-primary">Delete</button>
+  </div>
+</form>
+<!--PG Rating Form End-->
 {% endblock%}
