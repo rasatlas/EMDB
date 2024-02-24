@@ -10,6 +10,7 @@ class MoviePeople(Base, BaseModel):
 
     movie_id = Column(String(60), ForeignKey('tbl_movie.id'), nullable=False)
     people_id = Column(String(60), ForeignKey('tbl_people.id'), nullable=False)
+    name = Column(String(250), nullable=False)
 
     def __init__(self):
         """Initialization of MoviePeople"""
