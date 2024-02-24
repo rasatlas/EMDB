@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -28,6 +28,11 @@ def actors():
 @app.route('/actors/<name>')
 def actor(name):
     return render_template("actor.html", name=name)
+
+
+@app.route('/admin')
+def admin():
+    return render_template("editor.html")
 
 
 @app.errorhandler(404)
