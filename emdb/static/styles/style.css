@@ -2,6 +2,6 @@ body {
     margin: 10px 25px;
 }
 
-#people_form {
+.form_sizer {
     width: 45%;
 }
