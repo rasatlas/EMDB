@@ -4,8 +4,7 @@ EMDB - Admininstrator
 {% endblock %}
 {% block content %}
 <!--People Form Start-->
-<form id="people_form" class="form_sizer" method="POST">
-  {{ form.hidden_tag() }}
+<form id="people_form" class="form_sizer">
   {{ form.FirstName.label(class="form-label") }}
   {{ form.FirstName(class="form-control") }}
   {{ form.FatherName.label(class="form-label") }}
@@ -20,34 +19,31 @@ EMDB - Admininstrator
   {{ form.BirthDate(class="form-control") }}
   {{ form.DeathDate.label(class="form-label") }}
   {{ form.DeathDate(class="form-control") }}
-  {{form.Submit(class="btn btn-primary") }}
+  {{ form.Submit(class="btn btn-primary") }}
 </form>
 <!--People Form End-->
 
 <!--Language Form Start-->
 <form id="language_form" class="form_sizer">
-  {{ form.hidden_tag() }}
-  {{ form.Language.label(class="form-label") }}
-  {{ form.Language(class="form-control") }}
-  {{form.Submit(class="btn btn-primary") }}
+  {{ form1.Language.label(class="form-label") }}
+  {{ form1.Language(class="form-control") }}
+  {{ form1.Submit(class="btn btn-primary") }}
 </form>
 <!--Language Form End-->
 
 <!--Genre Form Start-->
 <form id="genre_form" class="form_sizer">
-  {{ form.hidden_tag() }}
-  {{ form.Genre.label(class="form-label") }}
-  {{ form.Genre(class="form-control") }}
-  {{form.Submit(class="btn btn-primary") }}
+  {{ form2.Genre.label(class="form-label") }}
+  {{ form2.Genre(class="form-control") }}
+  {{ form2.Submit(class="btn btn-primary") }}
 </form>
 <!--Genre Form End-->
 
 <!--PG Rating Form Start-->
 <form id="pg_rating_form" class="form_sizer">
-  {{ form.hidden_tag() }}
-  {{ form.PGRating.label(class="form-label") }}
-  {{ form.PGRating(class="form-control") }}
-  {{form.Submit(class="btn btn-primary") }}
+  {{ form3.PGRating.label(class="form-label") }}
+  {{ form3.PGRating(class="form-control") }}
+  {{ form3.Submit(class="btn btn-primary") }}
 </form>
 <!--PG Rating Form End-->
-{% endblock%}
+{% endblock %}
