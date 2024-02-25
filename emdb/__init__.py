@@ -1,6 +1,4 @@
 from flask import Flask, render_template
-from models.people import People
-from models.engine import storageengine
 from .forms import ActorForm, Language, Genre, PGRating
 
 
@@ -43,26 +41,6 @@ def admin():
     form_pgrating = PGRating()
 
     if form_actorForm.validate_on_submit():
-        FirstName = form_actorForm.FirstName.data
-        form_actorForm.FirstName.data = ''
-        FatherName = form_actorForm.FatherName.data
-        form_actorForm.FatherName.data = ''
-        GrandFatherName = form_actorForm.GrandFatherName.data
-        form_actorForm.GrandFatherName.data = ''
-        Height = form_actorForm.Height.data
-        form_actorForm.Height.data = ''
-        HeadShot = form_actorForm.HeadShot.data
-        form_actorForm.HeadShot.data = ''
-        BirthDate = form_actorForm.BirthDate.data
-        form_actorForm.BirthDate.data = ''
-        DeathDate = form_actorForm.DeathDate.data
-        form_actorForm.DeathDate.data = ''
-        record = People(FirstName, FatherName, GrandFatherName, BirthDate,
-                        DeathDate, Height, HeadShot)
-        storageengine.reload()
-        storageengine.new(record)
-        storageengine.save()
-        storageengine.close()
         return render_template('editor.html', form=form_actorForm)
 
     if form_language.validate_on_submit():
