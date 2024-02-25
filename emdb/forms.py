@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""A module containing definition of Forms for data input."""
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, DateField, FileField
 from wtforms.validators import DataRequired
