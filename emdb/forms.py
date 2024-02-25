@@ -16,11 +16,14 @@ class ActorForm(FlaskForm):
 
 class Language(FlaskForm):
     Language = StringField("Language", validators=[DataRequired()])
+    Submit = SubmitField("Save")
 
 
 class Genre(FlaskForm):
     Genre = StringField("Genre", validators=[DataRequired()])
+    Submit = SubmitField("Save")
 
 
 class PGRating(FlaskForm):
     PGRating = StringField("PG Rating", validators=[DataRequired()])
+    Submit = SubmitField("Save")
