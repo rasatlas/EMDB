@@ -5,45 +5,57 @@ EMDB - Admininstrator
 {% block content %}
 <!--People Form Start-->
 <form id="people_form" class="form_sizer">
-  {{ form.FirstName.label(class="form-label") }}
-  {{ form.FirstName(class="form-control") }}
-  {{ form.FatherName.label(class="form-label") }}
-  {{ form.FatherName(class="form-control") }}
-  {{ form.GrandFatherName.label(class="form-label") }}
-  {{ form.GrandFatherName(class="form-control") }}
-  {{ form.Height.label(class="form-label") }}
-  {{ form.Height(class="form-control") }}
-  {{ form.HeadShot.label(class="form-label") }}
-  {{ form.HeadShot(class="form-control") }}
-  {{ form.BirthDate.label(class="form-label") }}
-  {{ form.BirthDate(class="form-control") }}
-  {{ form.DeathDate.label(class="form-label") }}
-  {{ form.DeathDate(class="form-control") }}
-  {{ form.Submit(class="btn btn-primary") }}
+  <fieldset>
+    <legend>Actors</legend>
+    {{ form.FirstName.label(class="form-label") }}
+    {{ form.FirstName(class="form-control") }}
+    {{ form.FatherName.label(class="form-label") }}
+    {{ form.FatherName(class="form-control") }}
+    {{ form.GrandFatherName.label(class="form-label") }}
+    {{ form.GrandFatherName(class="form-control") }}
+    {{ form.Height.label(class="form-label") }}
+    {{ form.Height(class="form-control") }}
+    {{ form.HeadShot.label(class="form-label") }}
+    {{ form.HeadShot(class="form-control") }}
+    {{ form.BirthDate.label(class="form-label") }}
+    {{ form.BirthDate(class="form-control") }}
+    {{ form.DeathDate.label(class="form-label") }}
+    {{ form.DeathDate(class="form-control") }}
+    {{ form.Submit(class="btn btn-primary") }}
+  </fieldset>
 </form>
 <!--People Form End-->
 
 <!--Language Form Start-->
 <form id="language_form" class="form_sizer">
-  {{ form1.Language.label(class="form-label") }}
-  {{ form1.Language(class="form-control") }}
-  {{ form1.Submit(class="btn btn-primary") }}
+  <fieldset>
+    <legend>Language</legend>
+    {{ form1.Language.label(class="form-label") }}
+    {{ form1.Language(class="form-control") }}
+    {{ form1.Submit(class="btn btn-primary") }}
+  </fieldset>
 </form>
 <!--Language Form End-->
 
 <!--Genre Form Start-->
 <form id="genre_form" class="form_sizer">
-  {{ form2.Genre.label(class="form-label") }}
-  {{ form2.Genre(class="form-control") }}
-  {{ form2.Submit(class="btn btn-primary") }}
+  <fieldset>
+    <legend>Genre</legend>
+    {{ form2.Genre.label(class="form-label") }}
+    {{ form2.Genre(class="form-control") }}
+    {{ form2.Submit(class="btn btn-primary") }}
+  </fieldset>
 </form>
 <!--Genre Form End-->
 
 <!--PG Rating Form Start-->
 <form id="pg_rating_form" class="form_sizer">
-  {{ form3.PGRating.label(class="form-label") }}
-  {{ form3.PGRating(class="form-control") }}
-  {{ form3.Submit(class="btn btn-primary") }}
+  <fieldset>
+    <legend>PG Rating</legend>
+    {{ form3.PGRating.label(class="form-label") }}
+    {{ form3.PGRating(class="form-control") }}
+    {{ form3.Submit(class="btn btn-primary") }}
+  </fieldset>
 </form>
 <!--PG Rating Form End-->
 {% endblock %}
