@@ -1,6 +1,8 @@
 from flask import Flask, render_template
+from forms import ActorForm, Language, Genre, PGRating
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "dev"
 
 
 @app.route('/')
@@ -32,7 +34,22 @@ def actor(name):
 
 @app.route('/admin')
 def admin():
-    return render_template("editor.html")
+    form_actorForm = ActorForm()
+    form_language = Language()
+    form_genre = Genre()
+    form_pgrating = PGRating()
+
+    if form_actorForm.validate_on_submit():
+        return render_template('showData.html', form=form_actorForm)
+
+    if form_language.validate_on_submit():
+        return render_template('showData.html', form1=form_language)
+
+    if form_genre.validate_on_submit():
+        return render_template('showData.html', form2=form_genre)
+
+    if form_pgrating.validate_on_submit():
+        return render_template('showData.html', form3=form_pgrating)
 
 
 @app.errorhandler(404)
