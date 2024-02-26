@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from flask import Flask, render_template
 from .forms import ActorForm, Language, Genre, PGRating
+from .models.people import People
 
 
 app = Flask(__name__)
@@ -36,13 +37,21 @@ def actor(name):
 
 @app.route('/admin', methods=["GET", "POST"])
 def admin():
-    form_actorForm = ActorForm()
+    form_actor = ActorForm()
     form_language = Language()
     form_genre = Genre()
     form_pgrating = PGRating()
 
-    if form_actorForm.validate_on_submit():
-        return render_template('editor.html', form=form_actorForm)
+    if form_actor.validate_on_submit():
+        actor = People()
+        actor.first_name = form_actor.FirstName.data
+        actor.father_name = form_actor.FatherName.data
+        actor.grand_father_name = form_actor.GrandFatherName.data
+        actor.height = form_actor.Height.data
+        actor.head_shot = form_actor.HeadShot.data
+        actor.birth_date = form_actor.BirthDate.data
+        actor.death_date = form_actor.DeathDate.data
+        return render_template('editor.html', form=form_actor)
 
     if form_language.validate_on_submit():
         return render_template('editor.html', form1=form_language)
@@ -53,7 +62,7 @@ def admin():
     if form_pgrating.validate_on_submit():
         return render_template('editor.html', form3=form_pgrating)
 
-    return render_template('editor.html', form=form_actorForm,
+    return render_template('editor.html', form=form_actor,
                            form1=form_language, form2=form_genre,
                            form3=form_pgrating)
 
