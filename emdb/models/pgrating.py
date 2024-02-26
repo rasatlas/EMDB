@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from base_model import Base, BaseModel
+from .base_model import Base, BaseModel
 from sqlalchemy import Column, String
 
 

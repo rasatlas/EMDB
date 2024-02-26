@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Sets up class Movie."""
-from base_model import Base, BaseModel
+from .base_model import Base, BaseModel
 from sqlalchemy import Column, String, Date, Time, Double
 
 

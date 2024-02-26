@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Sets up class Genre"""
-from base_model import Base, BaseModel
+from .base_model import Base, BaseModel
 from sqlalchemy import Column, String
 
 
