@@ -3,7 +3,7 @@
     so, database is ready at system startup.
 """
 
-from models.engine.storageengine import StorageEngine
+from .engine.storageengine import StorageEngine
 
 
 storage = StorageEngine()
