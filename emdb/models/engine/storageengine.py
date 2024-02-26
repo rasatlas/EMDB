@@ -3,17 +3,17 @@
     related activities.
 """
 
-import models
-from models.base_model import Base
-from models.genre import Genre
-from models.language import Language
-from models.movie import Movie
-from models.moviegenre import MovieGenre
-from models.movielanguage import MovieLanguage
-from models.moviepeople import MoviePeople
-from models.moviepgrating import MoviePgRating
-from models.people import People
-from models.pgrating import PgRating
+import os
+from ..base_model import Base
+from ..genre import Genre
+from ..language import Language
+from ..movie import Movie
+from ..moviegenre import MovieGenre
+from ..movielanguage import MovieLanguage
+from ..moviepeople import MoviePeople
+from ..moviepgrating import MoviePgRating
+from ..people import People
+from ..pgrating import PgRating
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import sessionmaker
@@ -34,20 +34,26 @@ class StorageEngine:
 
     def __init__(self):
         """ Instantiate a StorageEngine object."""
-        self.__config = self.__read_config()
-        EMDB_MYSQL_HOST = self.__config.get('database', 'host')
-        EMDB_MYSQL_DB = self.__config.get('database', 'database')
-        EMDB_MYSQL_USER = self.__config.get('database', 'user')
-        EMDB_MYSQL_PWD = self.__config.get('database', 'password')
+        self.__config = self.__read_config("config.ini")
+        EMDB_MYSQL_HOST = self.__config.get("database", "host")
+        EMDB_MYSQL_DB = self.__config.get("database", "database")
+        EMDB_MYSQL_USER = self.__config.get("database", "user")
+        EMDB_MYSQL_PWD = self.__config.get("database", "password")
 
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
                                       format(EMDB_MYSQL_USER, EMDB_MYSQL_PWD,
                                              EMDB_MYSQL_HOST, EMDB_MYSQL_DB,
                                              pool_pre_ping=True))
 
-    def __read_config(self, file_path='config.ini'):
+    def __read_config(self, file_path):
+        # Get the directory of the current script
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+
+        # Construct the absolute path to config.ini
+        config_file_path = os.path.join(current_directory, file_path)
+
         config = configparser.ConfigParser()
-        config.read(file_path)
+        config.read(config_file_path)
         return config
 
     def all(self, cls=None):
@@ -87,16 +93,3 @@ class StorageEngine:
             to remove open session.
         """
         self.__session.remove()
-
-    def get(self, cls, id):
-        """ A method to retrieve on object.
-            Returns the object based on the class name and its id, or
-            None if not found.
-        """
-        if cls not in classes.values():
-            return None
-        else:
-            all_classes = models.storage.all()
-            for val in all_classes.values():
-                if (val.id == id):
-                    return val
