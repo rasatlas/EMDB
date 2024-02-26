@@ -2,6 +2,7 @@
 from flask import Flask, render_template
 from .forms import ActorForm, Language, Genre, PGRating
 from .models.people import People
+from .models import storage
 
 
 app = Flask(__name__)
@@ -51,6 +52,8 @@ def admin():
         actor.head_shot = form_actor.HeadShot.data
         actor.birth_date = form_actor.BirthDate.data
         actor.death_date = form_actor.DeathDate.data
+        storage.new(actor)
+        storage.save()
         return render_template('editor.html', form=form_actor)
 
     if form_language.validate_on_submit():
