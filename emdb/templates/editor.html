@@ -7,6 +7,7 @@ EMDB - Admininstrator
 <form action="{{ url_for('admin') }}" method="POST" id="people_form" class="form_sizer">
   <fieldset>
     <legend>Actors</legend>
+    {{ form.csrf_token }}
     {{ form.FirstName.label(class="form-label") }}
     {{ form.FirstName(class="form-control") }}
     {{ form.FatherName.label(class="form-label") }}
@@ -21,41 +22,68 @@ EMDB - Admininstrator
     {{ form.BirthDate(class="form-control") }}
     {{ form.DeathDate.label(class="form-label") }}
     {{ form.DeathDate(class="form-control") }}
-    {{ form.Submit(class="btn btn-primary") }}
+    {{ form.BtnActor(class="btn btn-primary") }}
   </fieldset>
 </form>
 <!--People Form End-->
 
 <!--Language Form Start-->
-<form id="language_form" class="form_sizer">
+<form action="{{ url_for('admin') }}" method="POST" id="language_form" class="form_sizer">
   <fieldset>
     <legend>Language</legend>
+    {{ form1.csrf_token }}
     {{ form1.Language.label(class="form-label") }}
     {{ form1.Language(class="form-control") }}
-    {{ form1.Submit(class="btn btn-primary") }}
+    {{ form1.BtnLanguage(class="btn btn-primary") }}
   </fieldset>
 </form>
 <!--Language Form End-->
 
 <!--Genre Form Start-->
-<form id="genre_form" class="form_sizer">
+<form action="{{ url_for('admin') }}" method="POST" id="genre_form" class="form_sizer">
   <fieldset>
     <legend>Genre</legend>
+    {{ form2.csrf_token }}
     {{ form2.Genre.label(class="form-label") }}
     {{ form2.Genre(class="form-control") }}
-    {{ form2.Submit(class="btn btn-primary") }}
+    {{ form2.BtnGenre(class="btn btn-primary") }}
   </fieldset>
 </form>
 <!--Genre Form End-->
 
 <!--PG Rating Form Start-->
-<form id="pg_rating_form" class="form_sizer">
+<form action="{{ url_for('admin') }}" method="POST" id="pg_rating_form" class="form_sizer">
   <fieldset>
     <legend>PG Rating</legend>
+    {{ form3.csrf_token }}
     {{ form3.PGRating.label(class="form-label") }}
     {{ form3.PGRating(class="form-control") }}
-    {{ form3.Submit(class="btn btn-primary") }}
+    {{ form3.BtnPGRating(class="btn btn-primary") }}
   </fieldset>
 </form>
 <!--PG Rating Form End-->
+
+<!--Movie Form Start-->
+<form action="{{ url_for('admin') }}" method="POST" id="movie_form" class="form_sizer">
+  <fieldset>
+    <legend>Movies</legend>
+    {{ form4.csrf_token }}
+    {{ form4.Title.label(class="form-label") }}
+    {{ form4.Title(class="form-control") }}
+    {{ form4.Cover.label(class="form-label") }}
+    {{ form4.Cover(class="form-control") }}
+    {{ form4.ReleaseDate.label(class="form-label") }}
+    {{ form4.ReleaseDate(class="form-control") }}
+    {{ form4.Duration.label(class="form-label") }}
+    {{ form4.Duration(class="form-control") }}
+    {{ form4.Synopsis.label(class="form-label") }}
+    {{ form4.Synopsis(class="form-control") }}
+    {{ form4.OfficialWebsite.label(class="form-label") }}
+    {{ form4.OfficialWebsite(class="form-control") }}
+    {{ form4.Budget.label(class="form-label") }}
+    {{ form4.Budget(class="form-control") }}
+    {{ form4.BtnMovie(class="btn btn-primary") }}
+  </fieldset>
+</form>
+<!--Movie Form End-->
 {% endblock %}
