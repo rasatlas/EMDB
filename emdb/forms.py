@@ -13,19 +13,30 @@ class ActorForm(FlaskForm):
     HeadShot = FileField("Head Shot", validators=[DataRequired()])
     BirthDate = DateField("Birth Date")
     DeathDate = DateField("Death Date")
-    Submit = SubmitField("Save")
+    BtnActor = SubmitField("Save")
 
 
-class Language(FlaskForm):
+class LanguageForm(FlaskForm):
     Language = StringField("Language", validators=[DataRequired()])
-    Submit = SubmitField("Save")
+    BtnLanguage = SubmitField("Save")
 
 
-class Genre(FlaskForm):
+class GenreForm(FlaskForm):
     Genre = StringField("Genre", validators=[DataRequired()])
-    Submit = SubmitField("Save")
+    BtnGenre = SubmitField("Save")
 
 
-class PGRating(FlaskForm):
+class PGRatingForm(FlaskForm):
     PGRating = StringField("PG Rating", validators=[DataRequired()])
-    Submit = SubmitField("Save")
+    BtnPGRating = SubmitField("Save")
+
+
+class MovieForm(FlaskForm):
+    Title = StringField("Title", validators=[DataRequired()])
+    Cover = FileField("Cover", validators=[DataRequired()])
+    ReleaseDate = DateField("Release Date", validators=[DataRequired()])
+    Duration = StringField("Duration", validators=[DataRequired()])
+    Synopsis = StringField("Synopsis", validators=[DataRequired()])
+    OfficialWebsite = StringField("Website")
+    Budget = StringField("Budget")
+    BtnMovie = SubmitField("Save")
