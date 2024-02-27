@@ -1,7 +1,11 @@
 #!/usr/bin/python3
-from flask import Flask, render_template
-from .forms import ActorForm, Language, Genre, PGRating
+from flask import Flask, render_template, request, url_for, redirect
+from .forms import ActorForm, LanguageForm, GenreForm, PGRatingForm, MovieForm
 from .models.people import People
+from .models.language import Language
+from .models.genre import Genre
+from .models.pgrating import PgRating
+from .models.movie import Movie
 from .models import storage
 
 
@@ -39,11 +43,12 @@ def actor(name):
 @app.route('/admin', methods=["GET", "POST"])
 def admin():
     form_actor = ActorForm()
-    form_language = Language()
-    form_genre = Genre()
-    form_pgrating = PGRating()
+    form_language = LanguageForm()
+    form_genre = GenreForm()
+    form_pgrating = PGRatingForm()
+    form_movie = MovieForm()
 
-    if form_actor.validate_on_submit():
+    if request.method == "POST" and 'BtnActor' in request.form:
         actor = People()
         actor.first_name = form_actor.FirstName.data
         actor.father_name = form_actor.FatherName.data
@@ -54,20 +59,50 @@ def admin():
         actor.death_date = form_actor.DeathDate.data
         storage.new(actor)
         storage.save()
-        return render_template('editor.html', form=form_actor)
+        storage.close()
+        return redirect(url_for("admin"))
 
-    if form_language.validate_on_submit():
-        return render_template('editor.html', form1=form_language)
+    if request.method == "POST" and 'BtnLanguage' in request.form:
+        language = Language()
+        language.language = form_language.Language.data
+        storage.new(language)
+        storage.save()
+        storage.close()
+        return redirect(url_for("admin"))
 
-    if form_genre.validate_on_submit():
-        return render_template('editor.html', form2=form_genre)
+    if request.method == "POST" and 'BtnGenre' in request.form:
+        genre = Genre()
+        genre.genre = form_genre.Genre.data
+        storage.new(genre)
+        storage.save()
+        storage.close()
+        return redirect(url_for("admin"))
 
-    if form_pgrating.validate_on_submit():
-        return render_template('editor.html', form3=form_pgrating)
+    if request.method == "POST" and 'BtnPGRating' in request.form:
+        pgRating = PgRating()
+        pgRating.pg_rating = form_pgrating.PGRating.data
+        storage.new(pgRating)
+        storage.save()
+        storage.close()
+        return redirect(url_for("admin"))
+
+    if request.method == "POST" and 'BtnMovie' in request.form:
+        movie = Movie()
+        movie.title = form_movie.Title.data
+        movie.cover = form_movie.Cover.data
+        movie.duration = form_movie.Duration.data
+        movie.release_date = form_movie.ReleaseDate.data
+        movie.synopsis = form_movie.Synopsis.data
+        movie.official_website = form_movie.OfficialWebsite.data
+        movie.budget = form_movie.Budget.data
+        storage.new(movie)
+        storage.save()
+        storage.close()
+        return redirect(url_for("admin"))
 
     return render_template('editor.html', form=form_actor,
                            form1=form_language, form2=form_genre,
-                           form3=form_pgrating)
+                           form3=form_pgrating, form4=form_movie)
 
 
 @app.errorhandler(404)
