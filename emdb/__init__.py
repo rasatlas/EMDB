@@ -7,10 +7,26 @@ from .models.genre import Genre
 from .models.pgrating import PgRating
 from .models.movie import Movie
 from .models import storage
+from werkzeug.utils import secure_filename
+import uuid as uuid
+import os
 
 
 app = Flask(__name__)
+
+
+UPLOAD_DIRECTORY_ACTOR = 'emdb/static/imgs/head_shot/'
+UPLOAD_DIRECTORY_MOVIE = 'emdb/static/imgs/cover/'
+
 app.config['SECRET_KEY'] = "dev"
+app.config['UPLOAD_DIRECTORY_ACTOR'] = UPLOAD_DIRECTORY_ACTOR
+app.config['UPLOAD_DIRECTORY_MOVIE'] = UPLOAD_DIRECTORY_MOVIE
+
+ALLOWED_EXTENSIONS = set(['.jpg', '.jpeg'])
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1]
 
 
 @app.route('/')
@@ -54,9 +70,24 @@ def admin():
         actor.father_name = form_actor.FatherName.data
         actor.grand_father_name = form_actor.GrandFatherName.data
         actor.height = form_actor.Height.data
-        actor.head_shot = form_actor.HeadShot.data
         actor.birth_date = form_actor.BirthDate.data
         actor.death_date = form_actor.DeathDate.data
+        # actor.head_shot = form_actor.HeadShot.data
+        # Test
+        actor.head_shot = form_actor.HeadShot.data
+        pic_filename = secure_filename(actor.head_shot.filename)
+        pic_name = str(uuid.uuid1()) + "_" + pic_filename
+
+        saver = request.files['HeadShot']
+        actor.head_shot = pic_name
+        if not os.path.exists(UPLOAD_DIRECTORY_ACTOR):
+            os.makedirs(UPLOAD_DIRECTORY_ACTOR)
+            saver.save(os.path.join(app.config['UPLOAD_DIRECTORY_ACTOR'],
+                                    pic_name))
+        else:
+            saver.save(os.path.join(app.config['UPLOAD_DIRECTORY_ACTOR'],
+                                    pic_name))
+        # End of Test
         storage.new(actor)
         storage.save()
         storage.close()
