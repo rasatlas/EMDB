@@ -4,7 +4,7 @@ EMDB - Admininstrator
 {% endblock %}
 {% block content %}
 <!--People Form Start-->
-<form action="{{ url_for('admin') }}" method="POST" id="people_form" class="form_sizer">
+<form action="{{ url_for('admin') }}" method="POST" enctype="multipart/form-data" id="people_form" class="form_sizer">
   <fieldset>
     <legend>Actors</legend>
     {{ form.csrf_token }}
