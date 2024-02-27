@@ -4,7 +4,7 @@ from .base_model import Base, BaseModel
 from sqlalchemy import Column, String
 
 
-class Language(Base, BaseModel):
+class Language(BaseModel, Base):
     """Representation of Language"""
     __tablename__ = "tbl_language"
 

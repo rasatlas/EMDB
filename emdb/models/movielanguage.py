@@ -4,7 +4,7 @@ from .base_model import Base, BaseModel
 from sqlalchemy import Column, String, ForeignKey
 
 
-class MovieLanguage(Base, BaseModel):
+class MovieLanguage(BaseModel, Base):
     """Representation of MovieLanguage"""
     __tablename__ = 'tbl_movie_language'
 

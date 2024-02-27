@@ -4,7 +4,7 @@ from .base_model import Base, BaseModel
 from sqlalchemy import Column, String, Date, Integer
 
 
-class People(Base, BaseModel):
+class People(BaseModel, Base):
     """Representation of People"""
     __tablename__ = 'tbl_people'
 

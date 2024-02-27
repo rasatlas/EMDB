@@ -4,7 +4,7 @@ from .base_model import Base, BaseModel
 from sqlalchemy import Column, String, ForeignKey
 
 
-class MoviePgRating(Base, BaseModel):
+class MoviePgRating(BaseModel, Base):
     """Representation of MoviePgRating"""
     __tablename__ = 'tbl_movie_pg_rating'
 

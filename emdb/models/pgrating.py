@@ -3,7 +3,7 @@ from .base_model import Base, BaseModel
 from sqlalchemy import Column, String
 
 
-class PgRating(Base, BaseModel):
+class PgRating(BaseModel, Base):
     """Representation of Pg Rating."""
     __tablename__ = 'tbl_pg_rating'
 

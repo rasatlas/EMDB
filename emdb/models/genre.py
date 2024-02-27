@@ -4,7 +4,7 @@ from .base_model import Base, BaseModel
 from sqlalchemy import Column, String
 
 
-class Genre(Base, BaseModel):
+class Genre(BaseModel, Base):
     """Representation of Genre"""
     __tablename__ = 'tbl_genre'
 
