@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """A module containing definition of Forms for data input."""
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, DateField, FileField
+from wtforms import StringField, SubmitField, DateField
+from wtforms import FileField, TextAreaField
 from wtforms.validators import DataRequired
 
 
@@ -36,7 +37,7 @@ class MovieForm(FlaskForm):
     Cover = FileField("Cover", validators=[DataRequired()])
     ReleaseDate = DateField("Release Date", validators=[DataRequired()])
     Duration = StringField("Duration", validators=[DataRequired()])
-    Synopsis = StringField("Synopsis", validators=[DataRequired()])
+    Synopsis = TextAreaField("Synopsis", validators=[DataRequired()])
     OfficialWebsite = StringField("Website")
     Budget = StringField("Budget")
     BtnMovie = SubmitField("Save")
