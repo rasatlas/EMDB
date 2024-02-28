@@ -15,8 +15,8 @@ class MoviePgRating(BaseModel, Base):
     content = Column(String(250), nullable=True)
 
     # Defining relationship.
-    movie = relationship("Movie", backref='pgrating')
-    pgrating = relationship("PgRating", backref='movie')
+    rel_movie = relationship("Movie", backref='pgrating')
+    rel_pgrating = relationship("PgRating", backref='movie')
 
     def __init__(self):
         """Initialization of MoviePgRating"""
