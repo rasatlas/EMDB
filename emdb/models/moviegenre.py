@@ -2,6 +2,7 @@
 """Sets up association class between movie and genre."""
 from .base_model import Base, BaseModel
 from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy.orm import relationship
 
 
 class MovieGenre(BaseModel, Base):
@@ -10,6 +11,10 @@ class MovieGenre(BaseModel, Base):
 
     movie_id = Column(String(60), ForeignKey('tbl_movie.id'), nullable=False)
     genre_id = Column(String(60), ForeignKey('tbl_genre.id'), nullable=False)
+
+    # Define relationship
+    movie = relationship("Movie", backref='genre')
+    genre = relationship("Genre", backref='movie')
 
     def __init__(self):
         """Initialization of MoviePeople"""
