@@ -13,8 +13,8 @@ class MovieGenre(BaseModel, Base):
     genre_id = Column(String(60), ForeignKey('tbl_genre.id'), nullable=False)
 
     # Define relationship
-    movie = relationship("Movie", backref='genre')
-    genre = relationship("Genre", backref='movie')
+    rel_movie = relationship("Movie", backref='genre')
+    rel_genre = relationship("Genre", backref='movie')
 
     def __init__(self):
         """Initialization of MoviePeople"""
