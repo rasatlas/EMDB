@@ -14,8 +14,8 @@ class MoviePeople(BaseModel, Base):
     name = Column(String(250), nullable=True)
 
     # Defining relationship.
-    people = relationship("People", backref='movie')
-    movie = relationship("Movie", backref='people')
+    rel_people = relationship("People", backref='movie')
+    rel_movie = relationship("Movie", backref='people')
 
     def __init__(self):
         """Initialization of MoviePeople"""
