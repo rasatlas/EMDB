@@ -14,8 +14,8 @@ class MovieLanguage(BaseModel, Base):
                          nullable=False)
 
     # Define relationship
-    movie = relationship("Movie", backref='language')
-    language = relationship("Language", backref='movie')
+    rel_movie = relationship("Movie", backref='language')
+    rel_language = relationship("Language", backref='movie')
 
     def __init__(self):
         """Initialization of MovieLanguage"""
