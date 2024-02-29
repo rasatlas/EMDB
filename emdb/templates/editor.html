@@ -64,7 +64,7 @@ EMDB - Admininstrator
 <!--PG Rating Form End-->
 
 <!--Movie Form Start-->
-<form action="{{ url_for('admin') }}" method="POST" id="movie_form" class="form_sizer">
+<form action="{{ url_for('admin') }}" method="POST" enctype="multipart/form-data" id="movie_form" class="form_sizer">
   <fieldset>
     <legend>Movies</legend>
     {{ form4.csrf_token }}
