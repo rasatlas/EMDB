@@ -72,8 +72,8 @@ def admin():
         actor.height = form_actor.Height.data
         actor.birth_date = form_actor.BirthDate.data
         actor.death_date = form_actor.DeathDate.data
-        # actor.head_shot = form_actor.HeadShot.data
-        # Test
+
+        # Save filename to db & file to 'UPLOAD_DIRECTORY_ACTOR' directory.
         actor.head_shot = form_actor.HeadShot.data
         pic_filename = secure_filename(actor.head_shot.filename)
         pic_name = str(uuid.uuid1()) + "_" + pic_filename
@@ -87,7 +87,7 @@ def admin():
         else:
             saver.save(os.path.join(app.config['UPLOAD_DIRECTORY_ACTOR'],
                                     pic_name))
-        # End of Test
+
         storage.new(actor)
         storage.save()
         storage.close()
@@ -120,12 +120,27 @@ def admin():
     if request.method == "POST" and 'BtnMovie' in request.form:
         movie = Movie()
         movie.title = form_movie.Title.data
-        movie.cover = form_movie.Cover.data
         movie.duration = form_movie.Duration.data
         movie.release_date = form_movie.ReleaseDate.data
         movie.synopsis = form_movie.Synopsis.data
         movie.official_website = form_movie.OfficialWebsite.data
         movie.budget = form_movie.Budget.data
+
+        # Save filename to db & file to 'UPLOAD_DIRECTORY_MOVIE' directory.
+        movie.cover = form_movie.Cover.data
+        cover_filename = secure_filename(movie.cover.filename)
+        cover_name = str(uuid.uuid1()) + "_" + cover_filename
+
+        saver = request.files['Cover']
+        movie.cover = cover_name
+        if not os.path.exists(UPLOAD_DIRECTORY_MOVIE):
+            os.makedirs(UPLOAD_DIRECTORY_MOVIE)
+            saver.save(os.path.join(app.config['UPLOAD_DIRECTORY_MOVIE'],
+                                    cover_name))
+        else:
+            saver.save(os.path.join(app.config['UPLOAD_DIRECTORY_MOVIE'],
+                                    cover_name))
+
         storage.new(movie)
         storage.save()
         storage.close()
