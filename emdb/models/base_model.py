@@ -16,12 +16,6 @@ class BaseModel:
         """Initializing the BaseModel"""
         self.id = str(uuid4())
 
-    def save(self):
-        pass
-
-    def delete(self):
-        pass
-
     def __str__(self):
         """String representation of the BaseModel."""
         return f"[{self.__class__.__name__}] <{self.id}>"
