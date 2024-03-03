@@ -58,14 +58,14 @@ class StorageEngine:
 
     def all(self, cls=None):
         """Query on the current database session."""
-        dict = {}
-        for c in classes:
-            if cls is None or cls is classes[c] or cls is c:
-                objs = self.__session.query(classes[c]).all()
+        result = {}
+        for class_name, class_obj in classes.items():
+            if cls is None or cls is class_obj or cls is class_name:
+                objs = self.__session.query(class_obj).all()
                 for obj in objs:
-                    key = obj.__class__.__name__ + '.' + obj.id
-                    dict[key] = obj
-        return (dict)
+                    key = f"{obj.__class__.__name__}.{obj.id}"
+                    result[key] = obj
+        return result
 
     def new(self, obj):
         """ Add obj to the current database session."""
