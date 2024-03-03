@@ -31,13 +31,19 @@ def allowed_file(filename):
 
 @app.route('/')
 def home():
-    return render_template("index.html")
+    movies = storage.all(Movie).values()
+    actors = storage.all(People).values()
+    return render_template("index.html", movies=movies, actors=actors,
+                           UPLOAD_DIRECTORY_ACTOR=UPLOAD_DIRECTORY_ACTOR,
+                           UPLOAD_DIRECTORY_MOVIE=UPLOAD_DIRECTORY_MOVIE)
 
 
 @app.route('/movies')
 @app.route('/movies/')
 def movies():
-    return render_template("movies.html")
+    movies = storage.all(Movie).values()
+    return render_template("movies.html", movies=movies,
+                           UPLOAD_DIRECTORY_MOVIE=UPLOAD_DIRECTORY_MOVIE)
 
 
 @app.route('/movies/<title>')
@@ -48,7 +54,9 @@ def movie(title):
 @app.route('/actors')
 @app.route('/actors/')
 def actors():
-    return render_template("actors.html")
+    actors = storage.all(People).values()
+    return render_template("actors.html", actors=actors,
+                           UPLOAD_DIRECTORY_ACTOR=UPLOAD_DIRECTORY_ACTOR)
 
 
 @app.route('/actors/<name>')
