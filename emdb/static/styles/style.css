@@ -22,6 +22,41 @@ fieldset legend {
     box-shadow: 0 0 0 5px #ddd;
 }
 
-.btn-primary{
+.btn-primary {
     margin: 20px 0px 0px 0px;
+}
+
+#cover_img, #head_shot_img {
+    width: 250px;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 50px;
+}
+
+#movie_container {
+    background-color: rgba(0, 0, 0, 0.884);
+    color: white;
+    height: auto;
+    border-radius: 5px;
+}
+
+#movie_title {
+    color: gold;
+}
+
+#cover_img {
+    float: left;
+    margin-right: 20px;
+}
+
+#tlr {
+    padding-top: 10px;
+}
+
+#movie_extra_info {
+    clear: both;
+    margin-left: 10px;
+    margin-top: 50px;
 }
