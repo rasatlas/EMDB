@@ -60,3 +60,7 @@ fieldset legend {
     margin-left: 10px;
     margin-top: 50px;
 }
+
+#head_shot_img {
+    border-radius: 5px;
+}
